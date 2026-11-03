@@ -59,17 +59,11 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 h1 { margin: 2px 0 0; font-size: clamp(22px, 5vw, 30px); font-weight: 700; text-wrap: balance; }
 h1 .num { font-family: var(--f-display); font-weight: 600; }
 .sub { font-size: 13px; opacity: .8; }
-.tools { margin-left: auto; align-self: flex-start; flex: none; display: flex; gap: 8px; align-items: center; }
-.music { font: inherit; font-size: 13px; font-weight: 600; white-space: nowrap; border: 1px solid rgb(255 255 255 / .35); border-radius: 999px; padding: 7px 13px; background: transparent; color: #ffffff; cursor: pointer; }
-.music[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: #111214; }
-.music:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-@media (prefers-reduced-motion: no-preference) { .music[aria-pressed="true"] span:first-child { display: inline-block; animation: bob 1.6s ease-in-out infinite; } }
-@keyframes bob { 50% { transform: translateY(-2px); } }
-.theme { flex: none; white-space: nowrap; display: flex; border: 1px solid rgb(255 255 255 / .35); border-radius: 999px; padding: 3px; gap: 2px; }
+.theme { margin-left: auto; align-self: flex-start; flex: none; white-space: nowrap; display: flex; border: 1px solid rgb(255 255 255 / .35); border-radius: 999px; padding: 3px; gap: 2px; }
 .theme button { font: inherit; font-size: 13px; font-weight: 600; border: 0; border-radius: 999px; padding: 6px 12px; background: transparent; color: #ffffff; cursor: pointer; }
 .theme button[aria-pressed="true"] { background: #ffffff; color: #111214; }
 .theme button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-@media (max-width: 520px) { header .wrap { flex-wrap: wrap; row-gap: 10px; } .brand-txt { flex: 1 1 180px; } .theme button { padding: 5px 10px; } .music { padding: 6px 11px; } }
+@media (max-width: 520px) { header .wrap { flex-wrap: wrap; row-gap: 10px; } .brand-txt { flex: 1 1 180px; } .theme button { padding: 5px 10px; } }
 
 main .wrap { padding-block: 20px 48px; display: grid; gap: 20px; }
 
@@ -196,12 +190,9 @@ footer { font-size: 12px; color: var(--muted); }
       <h1><span class="num">2026.11</span>월 휴무표</h1>
       <div class="sub">11월1일(일) ~ 30일(월)</div>
     </div>
-    <div class="tools">
-      <button type="button" class="music" id="music" aria-pressed="false" aria-label="배경 음악 켜기"><span aria-hidden="true">♪</span> <span class="ml">음악</span></button>
-      <div class="theme" role="group" aria-label="화면 밝기">
-        <button type="button" id="th-light" data-t="light">화이트</button>
-        <button type="button" id="th-dark" data-t="dark">블랙</button>
-      </div>
+    <div class="theme" role="group" aria-label="화면 밝기">
+      <button type="button" id="th-light" data-t="light">화이트</button>
+      <button type="button" id="th-dark" data-t="dark">블랙</button>
     </div>
   </div>
 </header>
@@ -399,62 +390,6 @@ document.querySelectorAll('.theme button').forEach(b => b.onclick = () => setThe
 let savedTheme = null;
 try { savedTheme = localStorage.getItem('r52-theme'); } catch (e) {}
 setTheme(savedTheme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'), false);
-
-// 배경 음악: Summer Love (여름날의 사랑) 반복 재생, 볼륨 30%
-// 아이폰은 audio.volume을 무시하므로 Web Audio 게인으로 볼륨을 맞춘다
-const Music = (() => {
-  const VOLUME = 0.3;
-  const audio = new Audio('summer-love.mp3');
-  audio.loop = true; audio.preload = 'none';
-  let ctx, gain, playing = false, stopTimer;
-  function init() {
-    try {
-      ctx = new (window.AudioContext || window.webkitAudioContext)();
-      gain = ctx.createGain(); gain.gain.value = 0;
-      ctx.createMediaElementSource(audio).connect(gain); gain.connect(ctx.destination);
-    } catch (e) { ctx = null; audio.volume = VOLUME; }
-  }
-  function fade(to, sec) {
-    if (!ctx) return;
-    const t = ctx.currentTime;
-    gain.gain.cancelScheduledValues(t); gain.gain.setValueAtTime(gain.gain.value, t); gain.gain.linearRampToValueAtTime(to, t + sec);
-  }
-  function start() {
-    if (ctx === undefined) init();
-    clearTimeout(stopTimer);
-    if (ctx) ctx.resume();
-    audio.play().catch(() => { playing = false; setMusic(false, false); });
-    fade(VOLUME, 2.5);
-    playing = true;
-  }
-  function stop() {
-    playing = false;
-    fade(0, 1.2);
-    stopTimer = setTimeout(() => audio.pause(), ctx ? 1300 : 0);
-  }
-  document.addEventListener('visibilitychange', () => {
-    if (!playing) return;
-    if (document.hidden) audio.pause(); else audio.play().catch(() => {});
-  });
-  return { start, stop, get playing() { return playing; } };
-})();
-
-const musicBtn = document.getElementById('music');
-function setMusic(on, save) {
-  try { on ? Music.start() : Music.stop(); } catch (e) { on = false; }
-  musicBtn.setAttribute('aria-pressed', on);
-  musicBtn.setAttribute('aria-label', on ? '배경 음악 끄기' : '배경 음악 켜기');
-  musicBtn.querySelector('.ml').textContent = on ? '음악 끄기' : '음악';
-  if (save) { try { localStorage.setItem('r52-music', on ? 'on' : 'off'); } catch (e) {} }
-}
-musicBtn.onclick = () => setMusic(!Music.playing, true);
-// 전에 음악을 켜 둔 사람은 화면을 처음 누를 때 다시 시작 (브라우저는 누르기 전 소리를 막음)
-try {
-  if (localStorage.getItem('r52-music') === 'on') {
-    const resume = e => { if (e.target.closest('#music')) return; if (!Music.playing) setMusic(true, false); };
-    document.addEventListener('pointerdown', resume, { once: true });
-  }
-} catch (e) {}
 
 buildGrid();
 buildDayPick();
