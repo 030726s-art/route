@@ -1,8 +1,8 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style></head><body>
 <title>루트52 11월 캐디 휴무</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
 <style>
 /* Layout: 고속도로 표지판 같은 진녹색 헤더 밴드 → 이름 검색 → 내 휴무 카드 → 전체표/날짜별 탭 */
 :root {
@@ -182,6 +182,20 @@ footer { font-size: 12px; color: var(--muted); }
 @media (max-width: 640px) {
   .tablebox { display: none; }
   .plist { display: block; }
+  .prow { padding: 10px 12px; gap: 6px; }
+  .pdays { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 3px; }
+  .pd { min-width: 0; padding: 3px 0; border-radius: 5px; overflow: hidden; }
+  .pd .dn { font-size: 12.5px; }
+  .pd .dw { font-size: 9px; white-space: nowrap; letter-spacing: -.04em; }
+  .names { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 3px; }
+  .names span { min-width: 0; padding: 4px 3px; border-radius: 5px; font-size: 11.5px; gap: 3px; justify-content: center; white-space: nowrap; overflow: hidden; }
+  .names span .sw { width: 7px; height: 7px; border-radius: 2px; flex: none; }
+  .names span em { display: none; }
+  .dayout { padding: 12px; }
+  .daypick { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 3px; }
+  .daypick button { aspect-ratio: 1; min-width: 0; padding: 0; justify-content: center; gap: 1px; border-radius: 7px; line-height: 1.1; }
+  .daypick button .n { font-size: 15px; }
+  .daypick button .c { font-size: 9px; letter-spacing: -.03em; }
   header .wrap { padding-block: 16px 20px; gap: 12px; }
   .search { margin-top: 0; box-shadow: none; }
   .shield { width: 60px; }
@@ -197,6 +211,78 @@ footer { font-size: 12px; color: var(--muted); }
   .c-cart { display: none; }
 }
 @media (prefers-reduced-motion: no-preference) { .tab, .daypick button { transition: background .15s, color .15s; } }
+
+/* ===== 실험: 프리미엄 클럽 테마 (틀은 그대로, 색·글꼴·선만 바꿈) =====
+   Layout: 같은 구조. 검정 바탕 + 금색 헤어라인, 세리프 제목, 휴무 칸은 금색 타일 */
+:root {
+  --bg: #f4f4f1; --surface: #ffffff; --fg: #16161a; --muted: #6b6a66; --line: #e2dfd6;
+  --brand: #0b0b0c; --brand-ink: #f3efe6; --gold: #b38a35;
+  --off: #1d1d21; --off-ink: #e6c987;
+  --sun: #b0473a; --sat: #3c5f9e; --weekend: #efede7; --hl: #f5ead0;
+  --t-a: #3e6cc4; --t-p: #c9779d; --t-s: #c24a3b; --t-g: #3d9466; --t-x: #8a5fba;
+  /* Pretendard와 같은 조합: 영문·숫자 Inter + 한글 Noto Sans KR */
+  --f-body: "Inter", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --f-display: "Inter", "Noto Sans KR", sans-serif;
+  --f-serif: "Inter", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+}
+body { letter-spacing: -.01em; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b0b0c; --surface: #141416; --fg: #ece7dc; --muted: #9a9487; --line: #2b2925;
+    --brand: #000000; --brand-ink: #f3efe6; --gold: #d4b06a;
+    --off: #d4b06a; --off-ink: #141210;
+    --sun: #e88676; --sat: #8fb0e8; --weekend: #1c1b19; --hl: #2f2818;
+    --t-a: #5b88e0; --t-p: #dd93b6; --t-s: #e06a58; --t-g: #57b884; --t-x: #a684d6;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b0b0c; --surface: #141416; --fg: #ece7dc; --muted: #9a9487; --line: #2b2925;
+  --brand: #000000; --brand-ink: #f3efe6; --gold: #d4b06a;
+  --off: #d4b06a; --off-ink: #141210;
+  --sun: #e88676; --sat: #8fb0e8; --weekend: #1c1b19; --hl: #2f2818;
+  --t-a: #5b88e0; --t-p: #dd93b6; --t-s: #e06a58; --t-g: #57b884; --t-x: #a684d6;
+  color-scheme: dark;
+}
+header.band { border-bottom: 1px solid var(--gold); }
+.eyebrow { font-family: var(--f-body); font-size: 11px; letter-spacing: .32em; }
+h1 { font-family: var(--f-serif); font-weight: 800; letter-spacing: -.025em; }
+h1 .num { font-family: var(--f-display); font-weight: 800; letter-spacing: -.02em; color: var(--gold); }
+.sub { letter-spacing: .04em; }
+.theme { border-color: rgb(212 176 106 / .5); }
+.theme button[aria-pressed="true"] { background: var(--gold); color: #141210; }
+.search { border-color: var(--line); box-shadow: 0 10px 30px rgb(0 0 0 / .18); }
+.search label { font-family: var(--f-serif); font-weight: 600; letter-spacing: .02em; }
+.search input:focus { border-color: var(--gold); }
+.card { border-color: var(--line); }
+.card-head h2, .dayout h3, .changes h2 { font-family: var(--f-serif); font-weight: 600; }
+.total, .prow-head .tt b { font-family: var(--f-display); color: var(--gold); font-weight: 700; }
+.chip { background: transparent; border: 1px solid var(--line); }
+.tabs { border-bottom-color: var(--line); }
+.tab { font-family: var(--f-serif); font-weight: 600; letter-spacing: .02em; }
+.tab[aria-selected="true"] { border-bottom-color: var(--gold); }
+.tablebox, .plist, .dayout { border-color: var(--line); }
+thead th { font-family: var(--f-body); letter-spacing: .02em; }
+.c-tot { color: var(--gold); }
+.prow-head .nm { font-family: var(--f-serif); font-weight: 600; }
+.daypick button { background: var(--surface); }
+.daypick button[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: #141210; }
+.names span { background: transparent; border: 1px solid var(--line); }
+footer { letter-spacing: .02em; }
+h1 .num, .total, .prow-head .tt b, .changes h2 .cnt { font-variant-numeric: lining-nums tabular-nums; }
+.mine:empty { display: none; }
+.search { margin-top: -30px; }
+.cal .d.off .tag, .pd .dw { opacity: .8; }
+@media (max-width: 640px) {
+  header .wrap { padding-block: 14px 16px; }
+  .eyebrow { font-size: 10px; letter-spacing: .18em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  h1 { font-size: 22px; }
+  .tools { order: 3; margin-left: 0; width: 100%; justify-content: flex-end; margin-top: -4px; }
+  .theme { padding: 2px; }
+  .theme button { font-size: 12px; padding: 4px 10px; }
+  .search { margin-top: 0; }
+  .tab { font-size: 15px; }
+}
 </style>
 
 <header class="band">
@@ -432,7 +518,7 @@ function setTheme(t, save) {
 document.querySelectorAll('.theme button').forEach(b => b.onclick = () => setTheme(b.dataset.t, true));
 let savedTheme = null;
 try { savedTheme = localStorage.getItem('r52-theme'); } catch (e) {}
-setTheme(savedTheme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'), false);
+setTheme(savedTheme || 'dark', false);
 
 buildGrid();
 buildDayPick();
