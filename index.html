@@ -1,4 +1,3 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>루트52 11월 캐디 휴무</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -182,6 +181,11 @@ footer { font-size: 12px; color: var(--muted); }
 @media (max-width: 640px) {
   .tablebox { display: none; }
   .plist { display: block; }
+  .names { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
+  .names span { padding: 4px 6px; border-radius: 6px; font-size: 13px; gap: 4px; white-space: nowrap; overflow: hidden; }
+  .names span .sw { width: 9px; height: 9px; flex: none; }
+  .names span em { font-size: 10px; margin-left: auto; }
+  .dayout { padding: 12px; }
   header .wrap { padding-block: 16px 20px; gap: 12px; }
   .search { margin-top: 0; box-shadow: none; }
   .shield { width: 60px; }
@@ -221,10 +225,9 @@ footer { font-size: 12px; color: var(--muted); }
     <section class="search" aria-label="내 휴무 찾기">
       <label for="q">이름으로 내 휴무 찾기</label>
       <div class="search-row">
-        <input id="q" type="search" placeholder="이름을 입력하세요 (예: 김미라)" autocomplete="off" enterkeyhint="search">
+        <input id="q" type="search" placeholder="이름을 입력하세요" autocomplete="off" enterkeyhint="search">
         <button id="clear" type="button">지우기</button>
       </div>
-      <div class="hint" id="hint">이름 일부만 입력해도 찾아요. 입력한 이름은 이 기기에 기억됩니다.</div>
     </section>
 
     <section class="mine" id="mine" aria-live="polite"></section>
@@ -447,5 +450,3 @@ try {
   const t = localStorage.getItem('r52-tab'); if (t === 'day') showTab('day');
 } catch (e) {}
 </script>
-
-</body></html>
