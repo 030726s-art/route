@@ -1,4 +1,3 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>루트52 11월 캐디 휴무</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,13 +58,15 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 h1 { margin: 2px 0 0; font-size: clamp(22px, 5vw, 30px); font-weight: 700; text-wrap: balance; }
 h1 .num { font-family: var(--f-display); font-weight: 600; }
 .sub { font-size: 13px; opacity: .8; }
-.theme { margin-left: auto; align-self: flex-start; flex: none; white-space: nowrap; display: flex; border: 1px solid rgb(255 255 255 / .35); border-radius: 999px; padding: 3px; gap: 2px; }
+.tools { margin-left: auto; align-self: flex-start; flex: none; display: flex; gap: 8px; align-items: center; }
+.theme { flex: none; white-space: nowrap; display: flex; border: 1px solid rgb(255 255 255 / .35); border-radius: 999px; padding: 3px; gap: 2px; }
 .theme button { font: inherit; font-size: 13px; font-weight: 600; border: 0; border-radius: 999px; padding: 6px 12px; background: transparent; color: #ffffff; cursor: pointer; }
 .theme button[aria-pressed="true"] { background: #ffffff; color: #111214; }
 .theme button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 @media (max-width: 520px) { header .wrap { flex-wrap: wrap; row-gap: 10px; } .brand-txt { flex: 1 1 180px; } .theme button { padding: 5px 10px; } }
 
-main .wrap { padding-block: 20px 48px; display: grid; gap: 20px; }
+main .wrap { padding-block: 20px 48px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+main .wrap > * { min-width: 0; }
 
 .search { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; margin-top: -34px; box-shadow: 0 6px 20px rgb(0 0 0 / .08); }
 .search label { font-weight: 600; font-size: 14px; display: block; margin-bottom: 8px; }
@@ -76,8 +77,8 @@ main .wrap { padding-block: 20px 48px; display: grid; gap: 20px; }
 .search button:focus-visible, .tab:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .hint { font-size: 13px; color: var(--muted); margin-top: 8px; }
 
-.mine { display: grid; gap: 14px; }
-.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; display: grid; gap: 14px; }
+.mine { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+.card { min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
 .card-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 14px; }
 .card-head h2 { margin: 0; font-size: 22px; }
 .meta { display: flex; gap: 8px; flex-wrap: wrap; }
@@ -86,10 +87,10 @@ main .wrap { padding-block: 20px 48px; display: grid; gap: 20px; }
 .total { margin-left: auto; font-family: var(--f-display); font-size: 30px; color: var(--off); line-height: 1; }
 .total small { font-family: var(--f-body); font-size: 13px; color: var(--muted); margin-left: 2px; }
 
-.cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; width: 100%; max-width: 640px; }
 .cal .dow { text-align: center; font-size: 12px; color: var(--muted); font-weight: 600; }
 .cal .dow.s0 { color: var(--sun); } .cal .dow.s6 { color: var(--sat); }
-.cal .d { aspect-ratio: 1 / .82; max-width: 100%; border-radius: 8px; background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; font-size: 14px; position: relative; }
+.cal .d { min-width: 0; aspect-ratio: 1 / .82; max-width: 100%; overflow: hidden; text-align: center; border-radius: 8px; background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; font-size: 14px; position: relative; }
 .cal .d.s0 .n { color: var(--sun); } .cal .d.s6 .n { color: var(--sat); }
 .cal .d.off { background: var(--off); color: var(--off-ink); font-weight: 700; }
 .cal .d.off .n { color: inherit; }
@@ -161,6 +162,21 @@ tfoot td.c-name { font-size: 12px; }
 .pd.etc .dw { font-weight: 600; }
 .prow.match { background: var(--hl); }
 
+/* 수정 표시: 엑셀 메모에 '수정'이 있는 칸 */
+td.mod { box-shadow: inset 0 0 0 2px var(--gold); position: relative; }
+td.mod::after { content: ""; position: absolute; top: 2px; right: 2px; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.pd.mod, .cal .d.mod { outline: 2px solid var(--gold); outline-offset: 1px; }
+.cal .d.mod::after { content: "수정"; position: absolute; top: -7px; right: -5px; font-size: 9.5px; font-weight: 700; line-height: 1; padding: 2px 3px; border-radius: 4px; background: var(--gold); color: #111214; }
+.mod-tag { font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 4px; background: var(--gold); color: #111214; vertical-align: 2px; margin-left: 4px; }
+.changes { background: var(--surface); border: 1px solid var(--gold); border-radius: 12px; padding: 14px 16px; display: grid; gap: 10px; }
+.changes h2 { margin: 0; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+.changes h2 .cnt { font-family: var(--f-display); color: var(--gold); font-size: 18px; }
+.chg-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.chg { font: inherit; font-size: 13.5px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); border-radius: 999px; padding: 5px 11px; cursor: pointer; display: inline-flex; gap: 6px; align-items: center; font-variant-numeric: tabular-nums; }
+.chg b { font-weight: 700; }
+.chg .v { color: var(--muted); }
+.chg:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
 footer { font-size: 12px; color: var(--muted); }
 @media (max-width: 640px) {
   .tablebox { display: none; }
@@ -190,9 +206,11 @@ footer { font-size: 12px; color: var(--muted); }
       <h1><span class="num">2026.11</span>월 휴무표</h1>
       <div class="sub">11월1일(일) ~ 30일(월)</div>
     </div>
-    <div class="theme" role="group" aria-label="화면 밝기">
-      <button type="button" id="th-light" data-t="light">화이트</button>
-      <button type="button" id="th-dark" data-t="dark">블랙</button>
+    <div class="tools">
+      <div class="theme" role="group" aria-label="화면 밝기">
+        <button type="button" id="th-light" data-t="light">화이트</button>
+        <button type="button" id="th-dark" data-t="dark">블랙</button>
+      </div>
     </div>
   </div>
 </header>
@@ -209,6 +227,8 @@ footer { font-size: 12px; color: var(--muted); }
     </section>
 
     <section class="mine" id="mine" aria-live="polite"></section>
+
+    <section class="changes" id="changes" hidden></section>
 
     <section style="display:grid; gap:14px">
       <div class="tabs" role="tablist">
@@ -230,12 +250,12 @@ footer { font-size: 12px; color: var(--muted); }
       </div>
     </section>
 
-    <footer>출처: ★26년 캐디 휴무★.xlsx · 11월 시트 (2026년 11월 3일 업데이트). 변경 사항은 경기팀에 확인해 주세요.</footer>
+    <footer>출처: ★26년 캐디 휴무★.xlsx · 11월 시트 (2026년 11월 4일 17:08 업데이트). 변경 사항은 경기팀에 확인해 주세요.</footer>
   </div>
 </main>
 
 <script>
-const DATA = [{"no":1,"name":"김미라","cart":"3","total":6,"days":[[2,"후출","a"],[5,"반납/조","n"],[12,"휴","n"],[13,"휴","x"],[17,"휴","n"],[23,"휴","n"],[24,"휴","n"],[29,"휴","n"]]},{"no":2,"name":"홍영표","cart":"2","total":6,"days":[[2,"후출","a"],[5,"반납/조","n"],[12,"휴","n"],[13,"휴","x"],[17,"휴","n"],[23,"휴","n"],[24,"휴","n"],[29,"휴","n"]]},{"no":3,"name":"조영미","cart":"23","total":8,"days":[[6,"휴","n"],[9,"휴","n"],[10,"휴","x"],[13,"휴","n"],[19,"휴","n"],[25,"휴","n"],[26,"휴","x"],[30,"휴","n"]]},{"no":4,"name":"김단비","cart":"39","total":8,"days":[[3,"휴","n"],[5,"휴","a"],[8,"휴","n"],[14,"휴","n"],[15,"휴","n"],[20,"휴","n"],[26,"휴","n"],[27,"휴","n"]]},{"no":5,"name":"안서아","cart":"26","total":7,"days":[[3,"반납/조","a"],[5,"휴","n"],[11,"휴","n"],[12,"휴","n"],[17,"휴","n"],[23,"휴","n"],[24,"휴","n"],[29,"휴","n"]]},{"no":6,"name":"이주은","cart":"67","total":8,"days":[[5,"휴","n"],[11,"휴","n"],[12,"휴","n"],[13,"휴","n"],[17,"휴","n"],[21,"휴","a"],[24,"휴","n"],[29,"휴","n"]]},{"no":7,"name":"맹선영","cart":"49","total":7,"days":[[3,"휴","x"],[8,"휴","x"],[10,"휴","n"],[12,"휴","n"],[13,"휴","n"],[18,"휴","x"],[25,"휴","x"]]},{"no":8,"name":"최혜영","cart":"35","total":8,"days":[[1,"휴","n"],[6,"휴","n"],[7,"휴","n"],[13,"휴","n"],[18,"휴","n"],[19,"휴","n"],[29,"휴","a"],[30,"휴","n"]]},{"no":9,"name":"전유빈","cart":"24","total":8,"days":[[1,"휴","n"],[6,"휴","n"],[7,"휴","n"],[11,"휴","x"],[15,"휴","n"],[22,"휴","a"],[25,"휴","n"],[29,"휴","n"]]},{"no":10,"name":"김진아","cart":"32","total":8,"days":[[1,"휴","n"],[3,"찾근","n"],[6,"휴","n"],[7,"휴","n"],[13,"휴","n"],[14,"휴","a"],[19,"휴","n"],[25,"휴","n"],[29,"휴","x"]]},{"no":11,"name":"전여진","cart":"68","total":9,"days":[[1,"휴","n"],[5,"휴","a"],[6,"휴","n"],[7,"휴","n"],[8,"휴","x"],[11,"휴","x"],[18,"휴","n"],[25,"휴","n"],[26,"휴","x"]]},{"no":12,"name":"이경진","cart":"33","total":10,"days":[[1,"휴","x"],[4,"찾근","n"],[8,"휴","n"],[12,"휴","n"],[14,"휴","n"],[15,"휴","n"],[20,"휴","x"],[21,"휴","x"],[22,"휴","x"],[23,"휴","n"],[26,"휴","n"]]},{"no":13,"name":"김미선","cart":"61","total":8,"days":[[1,"휴","n"],[2,"휴","n"],[3,"찾근","n"],[8,"휴","n"],[14,"휴","n"],[15,"휴","n"],[20,"휴","n"],[23,"휴","a"],[27,"휴","n"]]},{"no":14,"name":"김주인","cart":"8","total":7,"days":[[2,"휴","n"],[3,"찾근","n"],[10,"휴","a"],[14,"휴","n"],[15,"휴","n"],[20,"휴","n"],[23,"휴","x"],[24,"휴","x"]]},{"no":15,"name":"위재영","cart":"14","total":8,"days":[[1,"휴","x"],[4,"휴","n"],[7,"휴","x"],[8,"휴","x"],[15,"휴","x"],[21,"휴","n"],[22,"휴","n"],[28,"휴","n"]]},{"no":16,"name":"엄예은","cart":"50","total":7,"days":[[2,"휴","n"],[3,"반납/찾","n"],[8,"휴","n"],[14,"휴","n"],[15,"휴","n"],[20,"휴","n"],[26,"휴","n"],[27,"휴","n"]]},{"no":17,"name":"최인희","cart":"44","total":7,"days":[[5,"휴","n"],[11,"휴","n"],[12,"휴","n"],[17,"휴","n"],[23,"휴","n"],[24,"휴","n"],[30,"휴","a"]]},{"no":18,"name":"박희정","cart":"21","total":11,"days":[[1,"휴","n"],[2,"후출","n"],[3,"휴","n"],[9,"휴","x"],[14,"휴","x"],[15,"휴","x"],[16,"휴","x"],[21,"휴","n"],[22,"휴","x"],[28,"휴","x"],[29,"휴","x"],[30,"휴","n"]]},{"no":19,"name":"이경애","cart":"6","total":9,"days":[[1,"휴","n"],[2,"반납/찾","n"],[6,"휴","n"],[7,"휴","n"],[14,"휴","s"],[18,"휴","n"],[23,"휴","n"],[24,"휴","n"],[25,"휴","n"],[30,"휴","n"]]},{"no":20,"name":"최경숙","cart":"62","total":8,"days":[[4,"휴","x"],[11,"휴","n"],[12,"휴","n"],[16,"휴","a"],[17,"휴","n"],[23,"휴","n"],[24,"휴","n"],[29,"휴","n"]]},{"no":21,"name":"최윤영A","cart":"7순위","total":8,"days":[[5,"휴","n"],[11,"휴","n"],[14,"휴","x"],[15,"휴","a"],[19,"휴","a"],[23,"휴","n"],[24,"휴","n"],[29,"휴","n"]]},{"no":22,"name":"김상은","cart":"70","total":8,"days":[[2,"휴","n"],[3,"휴","n"],[9,"휴","x"],[14,"휴","n"],[15,"휴","n"],[20,"휴","n"],[26,"휴","n"],[27,"휴","n"]]},{"no":23,"name":"이정인","cart":"37","total":7,"days":[[2,"휴","n"],[3,"휴","n"],[9,"휴","x"],[16,"휴","x"],[20,"휴","n"],[24,"휴","x"],[27,"휴","n"]]},{"no":24,"name":"장희진","cart":"2순위","total":7,"days":[[9,"휴","n"],[10,"휴","n"],[14,"휴","a"],[16,"휴","n"],[21,"휴","n"],[22,"휴","n"],[28,"휴","n"]]},{"no":25,"name":"조은정","cart":"65","total":8,"days":[[4,"휴","n"],[9,"휴","n"],[10,"휴","n"],[16,"휴","n"],[17,"휴","a"],[21,"휴","n"],[22,"휴","n"],[28,"휴","n"]]},{"no":26,"name":"박은희","cart":"66","total":7,"days":[[4,"휴","n"],[5,"휴","n"],[9,"휴","n"],[10,"휴","n"],[17,"휴","n"],[22,"휴","n"],[28,"휴","n"]]},{"no":27,"name":"이윤선","cart":"63","total":8,"days":[[5,"휴","n"],[6,"휴","a"],[9,"휴","n"],[10,"휴","n"],[16,"휴","n"],[23,"휴","x"],[24,"휴","x"],[30,"휴","x"]]},{"no":28,"name":"최준","cart":"25","total":8,"days":[[4,"휴","n"],[10,"휴","n"],[11,"휴","a"],[16,"휴","n"],[21,"휴","n"],[22,"휴","n"],[27,"휴","n"],[28,"휴","n"]]},{"no":29,"name":"서연정","cart":"60","total":9,"days":[[7,"휴","x"],[8,"휴","n"],[11,"휴","n"],[12,"휴","n"],[17,"휴","n"],[24,"휴","n"],[25,"휴","n"],[28,"휴","a"],[29,"휴","n"]]},{"no":30,"name":"도규미","cart":"13","total":9,"days":[[11,"휴","n"],[12,"휴","n"],[16,"휴","x"],[19,"휴","x"],[20,"휴","a"],[23,"휴","n"],[24,"휴","n"],[29,"휴","n"],[30,"휴","x"]]},{"no":31,"name":"김혜림","cart":"30","total":9,"days":[[1,"휴","a"],[2,"휴","n"],[5,"휴","n"],[11,"휴","n"],[12,"휴","n"],[17,"휴","n"],[23,"휴","n"],[24,"휴","n"],[30,"휴","n"]]},{"no":32,"name":"김혜수","cart":"51","total":8,"days":[[4,"휴","a"],[11,"휴","n"],[12,"휴","n"],[13,"휴","n"],[17,"휴","n"],[26,"휴","x"],[27,"휴","x"],[28,"휴","x"]]},{"no":33,"name":"황희정","cart":"31","total":8,"days":[[4,"휴","n"],[7,"휴","a"],[11,"휴","n"],[12,"휴","n"],[16,"휴","n"],[21,"휴","x"],[22,"휴","x"],[29,"휴","n"]]},{"no":34,"name":"정혜원","cart":"52","total":7,"days":[[1,"휴","n"],[13,"휴","n"],[18,"휴","n"],[19,"휴","n"],[21,"휴","p"],[22,"휴","x"],[25,"휴","n"]]},{"no":35,"name":"강서현","cart":"8순위","total":8,"days":[[2,"당번","n"],[5,"휴","n"],[10,"휴","x"],[14,"휴","n"],[15,"휴","a"],[19,"휴","n"],[23,"휴","n"],[28,"휴","n"],[29,"휴","n"]]},{"no":36,"name":"최윤영","cart":"57","total":8,"days":[[1,"조출","n"],[3,"휴","x"],[6,"휴","n"],[13,"휴","n"],[18,"휴","n"],[20,"휴","n"],[21,"휴","n"],[27,"휴","n"],[30,"휴","n"]]},{"no":37,"name":"이유영","cart":"27","total":8,"days":[[1,"휴","x"],[4,"조출","n"],[5,"휴","x"],[11,"휴","x"],[16,"휴","n"],[20,"휴","a"],[21,"휴","n"],[22,"휴","n"],[26,"휴","x"]]},{"no":38,"name":"이지수","cart":"58","total":7,"days":[[1,"휴","n"],[2,"당번","n"],[7,"휴","n"],[8,"휴","x"],[13,"휴","n"],[18,"휴","n"],[21,"휴","x"],[30,"휴","n"]]},{"no":39,"name":"이채은","cart":"34","total":7,"days":[[4,"휴","n"],[10,"휴","n"],[16,"휴","n"],[18,"휴","x"],[19,"휴","x"],[25,"휴","x"],[26,"휴","a"]]},{"no":40,"name":"안채환","cart":"","total":7,"days":[[2,"휴","n"],[3,"당번","n"],[4,"당번","s"],[7,"휴","n"],[8,"휴","n"],[16,"휴","n"],[17,"휴","n"],[25,"휴","n"],[27,"휴","n"]]},{"no":41,"name":"박유미","cart":"9","total":9,"days":[[1,"휴","n"],[3,"당번","n"],[6,"휴","n"],[7,"휴","n"],[13,"휴","n"],[18,"휴","n"],[21,"휴","x"],[25,"휴","n"],[28,"휴","x"],[30,"휴","n"]]},{"no":42,"name":"송채원","cart":"4","total":8,"days":[[1,"휴","n"],[5,"당번","n"],[6,"휴","n"],[7,"휴","n"],[8,"휴","n"],[13,"휴","n"],[19,"휴","n"],[26,"휴","n"],[30,"휴","n"]]},{"no":43,"name":"이아영","cart":"20","total":6,"days":[[2,"반납/찾","n"],[5,"당번","n"],[6,"휴","x"],[7,"휴","x"],[19,"휴","x"],[20,"휴","n"],[26,"휴","n"],[27,"휴","n"]]},{"no":44,"name":"이선우","cart":"11","total":7,"days":[[1,"조출","n"],[2,"휴","n"],[3,"반납/조","n"],[6,"당번","n"],[8,"휴","n"],[9,"휴","x"],[14,"휴","n"],[15,"휴","n"],[20,"휴","n"],[27,"휴","n"]]},{"no":45,"name":"박영오","cart":"5순위","total":5,"days":[[2,"반납/조","n"],[3,"반납/찾","n"],[6,"당번","n"],[8,"휴","n"],[13,"휴","x"],[15,"휴","n"],[20,"휴","n"],[26,"휴","n"]]},{"no":46,"name":"김미숙","cart":"18","total":8,"days":[[3,"휴","n"],[4,"휴","n"],[7,"당번","n"],[11,"휴","n"],[15,"휴","n"],[18,"휴","n"],[20,"휴","n"],[25,"휴","n"],[26,"휴","n"]]},{"no":47,"name":"이서현","cart":"1","total":8,"days":[[1,"휴","x"],[4,"휴","n"],[7,"당번","n"],[8,"휴","a"],[14,"휴","n"],[20,"휴","n"],[21,"휴","n"],[22,"휴","n"],[28,"휴","n"]]},{"no":48,"name":"김현지","cart":"22","total":8,"days":[[2,"휴","n"],[7,"휴","x"],[8,"당번","n"],[9,"휴","n"],[10,"휴","n"],[12,"휴","a"],[16,"휴","n"],[21,"휴","n"],[28,"휴","n"]]},{"no":49,"name":"임미경","cart":"17","total":9,"days":[[1,"휴","n"],[7,"휴","n"],[8,"휴","x"],[9,"당번","n"],[14,"휴","x"],[15,"휴","x"],[22,"휴","x"],[23,"휴","n"],[28,"휴","x"],[29,"휴","x"]]},{"no":50,"name":"이재휘","cart":"59","total":7,"days":[[2,"휴","x"],[8,"당번","n"],[9,"휴","n"],[10,"휴","x"],[17,"휴","n"],[23,"휴","n"],[24,"휴","n"],[29,"휴","n"]]},{"no":51,"name":"백현정","cart":"56","total":8,"days":[[7,"휴","n"],[8,"휴","n"],[9,"휴","a"],[10,"당번","n"],[12,"휴","n"],[19,"휴","n"],[23,"휴","n"],[24,"휴","n"],[29,"휴","n"]]},{"no":52,"name":"이승희","cart":"9순위","total":8,"days":[[4,"휴","x"],[5,"휴","x"],[6,"휴","n"],[7,"휴","n"],[9,"당번","n"],[13,"휴","n"],[18,"휴","n"],[19,"휴","n"],[27,"휴","n"]]},{"no":53,"name":"김예은","cart":"10","total":8,"days":[[3,"휴","n"],[6,"휴","n"],[7,"휴","n"],[10,"당번","n"],[13,"휴","n"],[21,"휴","n"],[22,"휴","n"],[25,"휴","n"],[30,"휴","n"]]},{"no":54,"name":"이나영","cart":"48","total":8,"days":[[3,"휴","n"],[6,"휴","n"],[7,"휴","n"],[13,"휴","n"],[21,"휴","n"],[22,"휴","n"],[25,"휴","n"],[30,"휴","n"]]},{"no":55,"name":"박은숙","cart":"12","total":8,"days":[[1,"휴","n"],[2,"휴","n"],[8,"휴","n"],[14,"휴","n"],[15,"휴","n"],[20,"휴","n"],[26,"휴","n"],[27,"휴","n"]]},{"no":56,"name":"김은희","cart":"36","total":8,"days":[[1,"당번","n"],[2,"조출","n"],[3,"휴","n"],[9,"휴","n"],[10,"휴","x"],[14,"휴","n"],[15,"휴","n"],[17,"휴","x"],[20,"휴","n"],[27,"휴","n"]]},{"no":57,"name":"황선영","cart":"38","total":30,"days":[[1,"휴","s"],[2,"휴","s"],[3,"휴","s"],[4,"휴","s"],[5,"휴","s"],[6,"휴","s"],[7,"휴","s"],[8,"휴","s"],[9,"휴","s"],[10,"휴","s"],[11,"휴","s"],[12,"휴","s"],[13,"휴","s"],[14,"휴","s"],[15,"휴","s"],[16,"휴","s"],[17,"휴","s"],[18,"휴","s"],[19,"휴","s"],[20,"휴","s"],[21,"휴","s"],[22,"휴","s"],[23,"휴","s"],[24,"휴","s"],[25,"휴","s"],[26,"휴","s"],[27,"휴","s"],[28,"휴","s"],[29,"휴","s"],[30,"휴","s"]]},{"no":58,"name":"기지영","cart":"53","total":9,"days":[[2,"휴","n"],[3,"휴","n"],[4,"휴","n"],[8,"휴","n"],[14,"휴","n"],[15,"휴","n"],[20,"휴","n"],[25,"휴","n"],[26,"휴","n"]]},{"no":59,"name":"배희진","cart":"28","total":7,"days":[[4,"휴","n"],[10,"휴","n"],[12,"휴","n"],[16,"휴","n"],[21,"휴","n"],[22,"휴","n"],[28,"휴","n"]]},{"no":60,"name":"박선영","cart":"46","total":8,"days":[[2,"조출","n"],[4,"휴","n"],[9,"휴","n"],[10,"휴","n"],[16,"휴","n"],[18,"휴","n"],[19,"휴","n"],[27,"휴","a"],[28,"휴","n"]]},{"no":61,"name":"김혜미","cart":"55","total":8,"days":[[2,"조출","n"],[4,"휴","n"],[9,"휴","n"],[10,"휴","n"],[16,"휴","n"],[18,"휴","n"],[19,"휴","n"],[27,"휴","a"],[28,"휴","n"]]},{"no":62,"name":"김나경","cart":"64","total":8,"days":[[4,"휴","n"],[9,"휴","n"],[10,"휴","n"],[17,"휴","x"],[19,"휴","x"],[22,"휴","a"],[27,"휴","x"],[28,"휴","n"]]},{"no":63,"name":"이준영","cart":"5","total":11,"days":[[1,"휴","a"],[2,"휴","s"],[3,"휴","s"],[4,"휴","s"],[5,"휴","n"],[11,"휴","n"],[12,"휴","n"],[17,"휴","n"],[23,"휴","n"],[29,"휴","n"],[30,"휴","x"]]},{"no":64,"name":"장지혜","cart":"19","total":9,"days":[[2,"휴","n"],[3,"휴","n"],[8,"휴","n"],[14,"휴","n"],[15,"휴","n"],[17,"휴","x"],[20,"휴","n"],[26,"휴","n"],[27,"휴","n"]]},{"no":65,"name":"임은주","cart":"40","total":8,"days":[[4,"휴","n"],[5,"휴","x"],[9,"휴","n"],[10,"휴","n"],[16,"휴","n"],[22,"휴","n"],[28,"휴","n"],[29,"휴","a"]]},{"no":66,"name":"최준혁","cart":"3순위","total":6,"days":[[6,"휴","x"],[13,"휴","x"],[19,"휴","n"],[25,"휴","n"],[26,"휴","n"],[30,"휴","x"]]},{"no":67,"name":"김초목","cart":"3순위","total":8,"days":[[1,"휴","n"],[6,"휴","n"],[7,"휴","n"],[13,"휴","n"],[18,"휴","n"],[19,"휴","n"],[25,"휴","n"],[30,"휴","n"]]},{"no":68,"name":"김수진","cart":"6순위","total":8,"days":[[6,"휴","n"],[9,"휴","x"],[13,"휴","n"],[18,"휴","n"],[25,"휴","n"],[26,"휴","p"],[27,"휴","p"],[30,"휴","n"]]},{"no":69,"name":"강민","cart":"5순위","total":6,"days":[[5,"휴","n"],[6,"휴","n"],[11,"휴","n"],[17,"휴","n"],[18,"휴","a"],[24,"휴","n"]]},{"no":70,"name":"이지현","cart":"7순위","total":8,"days":[[4,"휴","n"],[10,"휴","n"],[16,"휴","n"],[17,"휴","n"],[18,"휴","n"],[21,"휴","n"],[22,"휴","n"],[23,"휴","a"]]},{"no":71,"name":"조정은","cart":"8순위","total":6,"days":[[4,"반납/찾","n"],[9,"휴","n"],[10,"휴","n"],[16,"휴","n"],[21,"휴","n"],[22,"휴","n"],[28,"휴","n"]]},{"no":72,"name":"곽윤미","cart":"","total":15,"days":[[2,"휴","n"],[3,"휴","n"],[4,"휴","n"],[5,"휴","n"],[6,"휴","n"],[9,"휴","n"],[10,"휴","n"],[11,"휴","n"],[12,"휴","n"],[13,"휴","n"],[16,"휴","n"],[17,"휴","n"],[18,"휴","n"],[19,"휴","n"],[20,"휴","n"],[23,"휴","n"],[24,"휴","n"],[25,"휴","n"],[26,"휴","n"],[27,"휴","n"],[30,"휴","n"]]}];
+const DATA = [{"no":1,"name":"김미라","cart":"3","total":6,"days":[[2,"후출","a"],[5,"반납/조","n"],[12,"휴","n"],[13,"휴","x"],[17,"휴","n"],[23,"휴","n"],[24,"휴","n"],[29,"휴","n"]],"mods":{},"personMod":false},{"no":2,"name":"홍영표","cart":"2","total":6,"days":[[2,"후출","a"],[5,"반납/조","n"],[12,"휴","n"],[13,"휴","x"],[17,"휴","n"],[23,"휴","n"],[24,"휴","n"],[29,"휴","n"]],"mods":{},"personMod":false},{"no":3,"name":"조영미","cart":"23","total":7,"days":[[9,"휴","n"],[10,"휴","x"],[13,"휴","n"],[19,"휴","n"],[25,"휴","n"],[26,"휴","x"],[30,"휴","n"]],"mods":{},"personMod":false},{"no":4,"name":"김단비","cart":"39","total":8,"days":[[3,"휴","n"],[5,"휴","a"],[8,"휴","n"],[14,"휴","n"],[15,"휴","n"],[20,"휴","n"],[26,"휴","n"],[27,"휴","n"]],"mods":{},"personMod":false},{"no":5,"name":"안서아","cart":"26","total":7,"days":[[3,"반납/조","a"],[5,"휴","n"],[11,"휴","n"],[12,"휴","n"],[17,"휴","n"],[23,"휴","n"],[24,"휴","n"],[29,"휴","n"]],"mods":{},"personMod":false},{"no":6,"name":"이주은","cart":"67","total":8,"days":[[5,"휴","n"],[11,"휴","n"],[12,"휴","n"],[13,"휴","n"],[17,"휴","n"],[21,"휴","a"],[24,"휴","n"],[29,"휴","n"]],"mods":{},"personMod":false},{"no":7,"name":"맹선영","cart":"49","total":6,"days":[[3,"휴","x"],[8,"휴","x"],[10,"휴","n"],[13,"휴","n"],[18,"휴","x"],[25,"휴","x"]],"mods":{},"personMod":false},{"no":8,"name":"최혜영","cart":"35","total":8,"days":[[1,"휴","n"],[6,"휴","n"],[7,"휴","n"],[13,"휴","n"],[18,"휴","n"],[19,"휴","n"],[29,"휴","a"],[30,"휴","n"]],"mods":{},"personMod":false},{"no":9,"name":"전유빈","cart":"24","total":8,"days":[[1,"휴","n"],[6,"휴","n"],[7,"휴","n"],[11,"휴","x"],[15,"휴","n"],[22,"휴","a"],[25,"휴","n"],[29,"휴","n"]],"mods":{},"personMod":false},{"no":10,"name":"김진아","cart":"32","total":8,"days":[[1,"휴","n"],[3,"찾근","n"],[6,"휴","n"],[7,"휴","n"],[13,"휴","n"],[14,"휴","a"],[19,"휴","n"],[25,"휴","n"],[29,"휴","x"]],"mods":{},"personMod":false},{"no":11,"name":"전여진","cart":"68","total":10,"days":[[1,"휴","n"],[5,"휴","a"],[6,"휴","n"],[7,"휴","n"],[8,"휴","x"],[11,"휴","x"],[18,"휴","n"],[25,"휴","n"],[26,"휴","x"],[27,"휴","n"]],"mods":{},"personMod":false},{"no":12,"name":"이경진","cart":"33","total":9,"days":[[1,"휴","x"],[4,"찾근","n"],[8,"휴","n"],[14,"휴","n"],[15,"휴","n"],[20,"휴","x"],[21,"휴","x"],[22,"휴","x"],[23,"휴","n"],[28,"휴","n"]],"mods":{},"personMod":false},{"no":13,"name":"김미선","cart":"61","total":8,"days":[[1,"휴","n"],[2,"휴","n"],[3,"찾근","n"],[8,"휴","n"],[14,"휴","n"],[15,"휴","n"],[20,"휴","n"],[23,"휴","a"],[27,"휴","n"]],"mods":{},"personMod":false},{"no":14,"name":"김주인","cart":"8","total":7,"days":[[2,"휴","n"],[3,"찾근","n"],[10,"휴","a"],[14,"휴","n"],[15,"휴","n"],[20,"휴","n"],[23,"휴","x"],[24,"휴","x"]],"mods":{},"personMod":false},{"no":15,"name":"위재영","cart":"14","total":9,"days":[[1,"휴","x"],[4,"휴","n"],[7,"휴","x"],[8,"휴","x"],[15,"휴","x"],[21,"휴","n"],[22,"휴","n"],[28,"휴","n"],[29,"휴","n"]],"mods":{},"personMod":false},{"no":16,"name":"엄예은","cart":"50","total":7,"days":[[2,"휴","n"],[3,"반납/찾","n"],[8,"휴","n"],[14,"휴","n"],[15,"휴","n"],[20,"휴","n"],[26,"휴","n"],[27,"휴","n"]],"mods":{},"personMod":false},{"no":17,"name":"최인희","cart":"44","total":7,"days":[[5,"휴","n"],[11,"휴","n"],[12,"휴","n"],[17,"휴","n"],[23,"휴","n"],[24,"휴","n"],[30,"휴","a"]],"mods":{},"personMod":false},{"no":18,"name":"박희정","cart":"21","total":11,"days":[[1,"휴","n"],[2,"후출","n"],[3,"휴","n"],[9,"휴","x"],[14,"휴","x"],[15,"휴","x"],[16,"휴","x"],[21,"휴","n"],[22,"휴","x"],[28,"휴","x"],[29,"휴","x"],[30,"휴","n"]],"mods":{},"personMod":false},{"no":19,"name":"이경애","cart":"6","total":9,"days":[[1,"휴","n"],[2,"반납/찾","n"],[6,"휴","n"],[14,"휴","s"],[15,"휴","s"],[18,"휴","n"],[23,"휴","n"],[24,"휴","n"],[25,"휴","n"],[30,"휴","n"]],"mods":{},"personMod":false},{"no":20,"name":"최경숙","cart":"62","total":7,"days":[[4,"휴","x"],[11,"휴","n"],[12,"휴","n"],[16,"휴","a"],[17,"휴","n"],[23,"휴","n"],[24,"휴","n"]],"mods":{},"personMod":false},{"no":21,"name":"최윤영A","cart":"54","total":8,"days":[[5,"휴","n"],[11,"휴","n"],[14,"휴","x"],[15,"휴","a"],[19,"휴","a"],[23,"휴","n"],[24,"휴","n"],[29,"휴","n"]],"mods":{},"personMod":false},{"no":22,"name":"김상은","cart":"70","total":8,"days":[[2,"휴","n"],[3,"휴","n"],[9,"휴","x"],[14,"휴","n"],[15,"휴","n"],[20,"휴","n"],[26,"휴","n"],[27,"휴","n"]],"mods":{},"personMod":false},{"no":23,"name":"이정인","cart":"37","total":7,"days":[[2,"휴","n"],[3,"휴","n"],[9,"휴","x"],[16,"휴","x"],[20,"휴","n"],[24,"휴","x"],[27,"휴","n"]],"mods":{},"personMod":false},{"no":24,"name":"장희진","cart":"69","total":7,"days":[[9,"휴","n"],[10,"휴","n"],[14,"휴","a"],[16,"휴","n"],[21,"휴","n"],[22,"휴","n"],[28,"휴","n"]],"mods":{},"personMod":false},{"no":25,"name":"조은정","cart":"65","total":8,"days":[[4,"휴","n"],[9,"휴","n"],[10,"휴","n"],[16,"휴","n"],[17,"휴","a"],[21,"휴","n"],[22,"휴","n"],[28,"휴","n"]],"mods":{},"personMod":false},{"no":26,"name":"박은희","cart":"66","total":7,"days":[[4,"휴","n"],[5,"휴","n"],[9,"휴","n"],[10,"휴","n"],[17,"휴","n"],[22,"휴","n"],[28,"휴","n"]],"mods":{},"personMod":false},{"no":27,"name":"이윤선","cart":"63","total":8,"days":[[5,"휴","n"],[6,"휴","a"],[9,"휴","n"],[10,"휴","n"],[16,"휴","n"],[23,"휴","x"],[24,"휴","x"],[30,"휴","x"]],"mods":{},"personMod":false},{"no":28,"name":"최준","cart":"25","total":8,"days":[[4,"휴","n"],[10,"휴","n"],[11,"휴","a"],[16,"휴","n"],[21,"휴","n"],[22,"휴","n"],[27,"휴","n"],[28,"휴","n"]],"mods":{},"personMod":false},{"no":29,"name":"서연정","cart":"60","total":9,"days":[[5,"후출","n"],[7,"휴","x"],[8,"휴","n"],[11,"휴","n"],[12,"휴","n"],[17,"휴","n"],[24,"휴","n"],[25,"휴","n"],[28,"휴","a"],[29,"휴","n"]],"mods":{},"personMod":false},{"no":30,"name":"도규미","cart":"13","total":9,"days":[[11,"휴","n"],[12,"휴","n"],[16,"휴","x"],[19,"휴","x"],[20,"휴","a"],[23,"휴","n"],[24,"휴","n"],[29,"휴","n"],[30,"휴","x"]],"mods":{},"personMod":false},{"no":31,"name":"김혜림","cart":"30","total":9,"days":[[1,"휴","a"],[2,"휴","n"],[5,"휴","n"],[11,"휴","n"],[12,"휴","n"],[17,"휴","n"],[23,"휴","n"],[24,"휴","n"],[30,"휴","n"]],"mods":{},"personMod":false},{"no":32,"name":"김혜수","cart":"51","total":8,"days":[[4,"휴","a"],[11,"휴","n"],[12,"휴","n"],[13,"휴","n"],[17,"휴","n"],[26,"휴","x"],[27,"휴","x"],[28,"휴","x"]],"mods":{},"personMod":false},{"no":33,"name":"황희정","cart":"31","total":8,"days":[[4,"휴","n"],[7,"휴","a"],[11,"휴","n"],[12,"휴","n"],[16,"휴","n"],[21,"휴","x"],[22,"휴","x"],[29,"휴","n"]],"mods":{},"personMod":false},{"no":34,"name":"정혜원","cart":"52","total":7,"days":[[1,"휴","n"],[13,"휴","n"],[18,"휴","n"],[19,"휴","n"],[21,"휴","p"],[22,"휴","x"],[25,"휴","n"]],"mods":{},"personMod":false},{"no":35,"name":"강서현","cart":"45","total":8,"days":[[2,"당번","n"],[5,"휴","n"],[10,"휴","x"],[14,"휴","n"],[15,"휴","a"],[19,"휴","n"],[23,"휴","n"],[28,"휴","n"],[29,"휴","n"]],"mods":{},"personMod":false},{"no":36,"name":"최윤영","cart":"57","total":8,"days":[[1,"조출","n"],[3,"휴","x"],[6,"휴","n"],[13,"휴","n"],[18,"휴","n"],[20,"휴","n"],[21,"휴","n"],[27,"휴","n"],[30,"휴","n"]],"mods":{},"personMod":false},{"no":37,"name":"이유영","cart":"27","total":8,"days":[[1,"휴","x"],[4,"조출","n"],[5,"휴","x"],[11,"휴","x"],[16,"휴","n"],[20,"휴","a"],[21,"휴","n"],[22,"휴","n"],[26,"휴","x"]],"mods":{},"personMod":false},{"no":38,"name":"이지수","cart":"58","total":7,"days":[[1,"휴","n"],[2,"당번","n"],[7,"휴","n"],[8,"휴","x"],[13,"휴","n"],[18,"휴","n"],[21,"휴","x"],[30,"휴","n"]],"mods":{},"personMod":false},{"no":39,"name":"이채은","cart":"34","total":7,"days":[[4,"휴","n"],[10,"휴","n"],[16,"휴","n"],[18,"휴","x"],[19,"휴","x"],[25,"휴","x"],[26,"휴","a"]],"mods":{},"personMod":false},{"no":40,"name":"안채환","cart":"4순위","total":7,"days":[[2,"휴","n"],[3,"당번","n"],[4,"당번","s"],[7,"휴","n"],[8,"휴","n"],[16,"휴","n"],[17,"휴","n"],[25,"휴","n"],[26,"휴","n"]],"mods":{},"personMod":false},{"no":41,"name":"박유미","cart":"9","total":9,"days":[[1,"휴","n"],[3,"당번","n"],[6,"휴","n"],[7,"휴","n"],[13,"휴","n"],[18,"휴","n"],[21,"휴","x"],[25,"휴","n"],[28,"휴","x"],[30,"휴","n"]],"mods":{},"personMod":false},{"no":42,"name":"송채원","cart":"4","total":8,"days":[[1,"휴","n"],[5,"당번","n"],[6,"휴","n"],[7,"휴","n"],[8,"휴","n"],[13,"휴","n"],[19,"휴","n"],[26,"휴","n"],[30,"휴","n"]],"mods":{},"personMod":false},{"no":43,"name":"이아영","cart":"20","total":4,"days":[[2,"반납/찾","n"],[5,"당번","n"],[6,"반납/찾","x"],[7,"반납/찾","x"],[19,"휴","x"],[20,"휴","n"],[26,"휴","n"],[27,"휴","n"]],"mods":{},"personMod":false},{"no":44,"name":"이선우","cart":"11","total":7,"days":[[1,"조출","n"],[2,"휴","n"],[3,"반납/조","n"],[6,"당번","n"],[8,"휴","n"],[9,"휴","x"],[14,"휴","n"],[15,"휴","n"],[20,"휴","n"],[27,"휴","n"]],"mods":{},"personMod":false},{"no":45,"name":"박영오","cart":"29","total":5,"days":[[2,"반납/조","n"],[3,"반납/찾","n"],[6,"당번","n"],[8,"휴","n"],[13,"휴","x"],[15,"휴","n"],[20,"휴","n"],[26,"휴","n"]],"mods":{},"personMod":false},{"no":46,"name":"김미숙","cart":"18","total":8,"days":[[3,"휴","n"],[4,"휴","n"],[7,"당번","n"],[11,"휴","n"],[15,"휴","n"],[18,"휴","n"],[20,"휴","n"],[25,"휴","n"],[26,"휴","n"]],"mods":{},"personMod":false},{"no":47,"name":"이서현","cart":"1","total":8,"days":[[1,"휴","x"],[4,"휴","n"],[7,"당번","n"],[8,"휴","a"],[14,"휴","n"],[20,"휴","n"],[21,"휴","n"],[22,"휴","n"],[28,"휴","n"]],"mods":{},"personMod":false},{"no":48,"name":"김현지","cart":"22","total":8,"days":[[2,"휴","n"],[7,"휴","x"],[8,"당번","n"],[9,"휴","n"],[10,"휴","n"],[12,"휴","a"],[17,"휴","x"],[21,"휴","n"],[28,"휴","n"]],"mods":{},"personMod":false},{"no":49,"name":"임미경","cart":"17","total":9,"days":[[1,"휴","n"],[7,"휴","n"],[8,"휴","x"],[9,"당번","n"],[14,"휴","x"],[15,"휴","x"],[22,"휴","x"],[23,"휴","n"],[28,"휴","x"],[29,"휴","x"]],"mods":{},"personMod":false},{"no":50,"name":"이재휘","cart":"59","total":7,"days":[[2,"휴","x"],[8,"당번","n"],[9,"휴","n"],[10,"휴","x"],[17,"휴","n"],[23,"휴","n"],[24,"휴","n"],[29,"휴","n"]],"mods":{},"personMod":false},{"no":51,"name":"백현정","cart":"56","total":8,"days":[[7,"휴","n"],[8,"휴","n"],[9,"휴","a"],[10,"당번","n"],[12,"휴","n"],[19,"휴","n"],[23,"휴","n"],[24,"휴","n"],[29,"휴","n"]],"mods":{},"personMod":false},{"no":52,"name":"이승희","cart":"41","total":8,"days":[[4,"휴","x"],[5,"휴","x"],[6,"휴","n"],[7,"휴","n"],[9,"당번","n"],[13,"휴","n"],[18,"휴","n"],[19,"휴","n"],[27,"휴","n"]],"mods":{},"personMod":false},{"no":53,"name":"김예은","cart":"10","total":8,"days":[[3,"휴","n"],[6,"휴","n"],[7,"휴","n"],[10,"당번","n"],[13,"휴","n"],[21,"휴","n"],[22,"휴","n"],[25,"휴","n"],[30,"휴","n"]],"mods":{},"personMod":false},{"no":54,"name":"이나영","cart":"48","total":8,"days":[[3,"휴","n"],[6,"휴","n"],[7,"휴","n"],[13,"휴","n"],[21,"휴","n"],[22,"휴","n"],[25,"휴","n"],[30,"휴","n"]],"mods":{},"personMod":false},{"no":55,"name":"박은숙","cart":"12","total":8,"days":[[1,"휴","n"],[2,"휴","n"],[7,"휴","s"],[8,"휴","n"],[15,"휴","n"],[20,"휴","n"],[26,"휴","n"],[27,"휴","n"]],"mods":{},"personMod":false},{"no":56,"name":"김은희","cart":"36","total":8,"days":[[1,"당번","n"],[2,"조출","n"],[3,"휴","n"],[9,"휴","n"],[10,"휴","x"],[14,"휴","n"],[15,"휴","n"],[16,"휴","n"],[20,"휴","n"],[27,"휴","n"]],"mods":{},"personMod":false},{"no":57,"name":"황선영","cart":"38","total":30,"days":[[1,"휴","s"],[2,"휴","s"],[3,"휴","s"],[4,"휴","s"],[5,"휴","s"],[6,"휴","s"],[7,"휴","s"],[8,"휴","s"],[9,"휴","s"],[10,"휴","s"],[11,"휴","s"],[12,"휴","s"],[13,"휴","s"],[14,"휴","s"],[15,"휴","s"],[16,"휴","s"],[17,"휴","s"],[18,"휴","s"],[19,"휴","s"],[20,"휴","s"],[21,"휴","s"],[22,"휴","s"],[23,"휴","s"],[24,"휴","s"],[25,"휴","s"],[26,"휴","s"],[27,"휴","s"],[28,"휴","s"],[29,"휴","s"],[30,"휴","s"]],"mods":{},"personMod":false},{"no":58,"name":"기지영","cart":"53","total":9,"days":[[2,"휴","n"],[3,"휴","n"],[4,"휴","n"],[5,"후출","n"],[8,"휴","n"],[14,"휴","n"],[15,"휴","n"],[20,"휴","n"],[25,"휴","n"],[26,"휴","n"]],"mods":{},"personMod":false},{"no":59,"name":"배희진","cart":"28","total":7,"days":[[4,"휴","n"],[10,"휴","n"],[12,"휴","n"],[16,"휴","n"],[21,"휴","n"],[22,"휴","n"],[28,"휴","n"]],"mods":{},"personMod":false},{"no":60,"name":"박선영","cart":"46","total":8,"days":[[2,"조출","n"],[4,"휴","n"],[9,"휴","n"],[10,"휴","n"],[16,"휴","n"],[18,"휴","n"],[19,"휴","n"],[27,"휴","a"],[28,"휴","n"]],"mods":{},"personMod":false},{"no":61,"name":"김혜미","cart":"55","total":8,"days":[[2,"조출","n"],[4,"휴","n"],[9,"휴","n"],[10,"휴","n"],[16,"휴","n"],[18,"휴","n"],[19,"휴","n"],[27,"휴","a"],[28,"휴","n"]],"mods":{},"personMod":false},{"no":62,"name":"김나경","cart":"64","total":8,"days":[[4,"휴","n"],[9,"휴","n"],[10,"휴","n"],[17,"휴","x"],[19,"휴","x"],[22,"휴","a"],[27,"휴","x"],[28,"휴","n"]],"mods":{},"personMod":false},{"no":63,"name":"이준영","cart":"5","total":11,"days":[[1,"휴","a"],[2,"휴","s"],[3,"휴","s"],[4,"휴","s"],[5,"휴","n"],[11,"휴","n"],[12,"휴","n"],[17,"휴","n"],[23,"휴","n"],[29,"휴","n"],[30,"휴","x"]],"mods":{},"personMod":false},{"no":64,"name":"장지혜","cart":"19","total":9,"days":[[2,"휴","n"],[3,"휴","n"],[8,"휴","n"],[14,"휴","n"],[15,"휴","n"],[17,"휴","x"],[20,"휴","n"],[26,"휴","n"],[27,"휴","n"]],"mods":{},"personMod":false},{"no":65,"name":"임은주","cart":"40","total":9,"days":[[4,"휴","n"],[5,"휴","x"],[6,"휴","n"],[9,"휴","n"],[10,"휴","n"],[16,"휴","n"],[22,"휴","n"],[28,"휴","n"],[29,"휴","a"]],"mods":{},"personMod":false},{"no":66,"name":"최준혁","cart":"","total":6,"days":[[6,"휴","x"],[13,"휴","x"],[19,"휴","n"],[25,"휴","n"],[26,"휴","n"],[30,"휴","x"]],"mods":{},"personMod":false},{"no":67,"name":"김초목","cart":"3순위","total":8,"days":[[1,"휴","n"],[6,"휴","n"],[7,"휴","n"],[12,"휴","n"],[18,"휴","n"],[19,"휴","n"],[25,"휴","n"],[30,"휴","n"]],"mods":{},"personMod":false},{"no":68,"name":"김수진","cart":"6순위","total":8,"days":[[6,"휴","n"],[9,"휴","x"],[13,"휴","n"],[18,"휴","n"],[25,"휴","n"],[26,"휴","p"],[27,"휴","p"],[30,"휴","n"]],"mods":{},"personMod":false},{"no":69,"name":"강민","cart":"5순위","total":6,"days":[[5,"휴","n"],[6,"휴","n"],[11,"휴","n"],[17,"휴","n"],[18,"휴","a"],[24,"휴","n"]],"mods":{},"personMod":false},{"no":70,"name":"이지현","cart":"7순위","total":8,"days":[[4,"휴","n"],[10,"휴","n"],[16,"휴","n"],[17,"휴","n"],[18,"휴","n"],[21,"휴","n"],[22,"휴","n"],[23,"휴","a"]],"mods":{},"personMod":false},{"no":71,"name":"조정은","cart":"8순위","total":6,"days":[[4,"반납/찾","n"],[9,"휴","n"],[10,"휴","n"],[12,"휴","n"],[16,"휴","n"],[21,"휴","n"],[22,"휴","n"]],"mods":{},"personMod":false},{"no":72,"name":"곽윤미","cart":"","total":16,"days":[[2,"휴","n"],[3,"휴","n"],[4,"휴","n"],[5,"휴","n"],[6,"휴","n"],[9,"휴","n"],[10,"휴","n"],[11,"휴","n"],[12,"휴","n"],[13,"휴","n"],[16,"휴","n"],[17,"휴","n"],[18,"휴","n"],[19,"휴","n"],[20,"휴","n"],[23,"휴","n"],[24,"휴","n"],[25,"휴","n"],[26,"휴","n"],[27,"휴","n"],[30,"휴","n"]],"mods":{},"personMod":false}];
 const DAYS = 30, FIRST_DOW = 0; // 2026-11-01 = 일요일
 const WD = ['일','월','화','수','목','금','토'];
 const TYPES = {
@@ -251,7 +271,9 @@ const isOff = v => v === '휴';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const cartLabel = c => c === '' ? '-' : (/순위/.test(c) ? c : c + '번');
 
-DATA.forEach(p => { p.map = {}; p.days.forEach(([d, v, t]) => p.map[d] = { v, t }); });
+DATA.forEach(p => { p.map = {}; p.days.forEach(([d, v, t]) => p.map[d] = { v, t }); p.mods = p.mods || {}; });
+const isMod = (p, d) => p.mods[d] !== undefined;
+const modTag = p => p.personMod ? '<span class="mod-tag">수정</span>' : '';
 
 // legend
 document.getElementById('legend').innerHTML = Object.values(TYPES).map(t =>
@@ -273,9 +295,10 @@ function buildGrid() {
   for (let d = 1; d <= DAYS; d++) h += `<th class="s${dow(d)}">${d}<span class="wd">${WD[dow(d)]}</span></th>`;
   h += '<th class="c-tot">합계</th></tr></thead><tbody>';
   DATA.forEach(p => {
-    h += `<tr data-no="${p.no}"><td class="c-no">${p.no}</td><td class="c-name">${esc(p.name)}</td><td class="c-cart">${esc(cartLabel(p.cart))}</td>`;
+    h += `<tr data-no="${p.no}"><td class="c-no">${p.no}</td><td class="c-name">${esc(p.name)}${modTag(p)}</td><td class="c-cart">${esc(cartLabel(p.cart))}</td>`;
     for (let d = 1; d <= DAYS; d++) {
-      const w = dow(d); h += `<td class="day${w === 0 || w === 6 ? ' wk' : ''}">${markHTML(p.map[d])}</td>`;
+      const w = dow(d), m = isMod(p, d);
+      h += `<td class="day${w === 0 || w === 6 ? ' wk' : ''}${m ? ' mod' : ''}"${m ? ` title="${esc(p.mods[d])}"` : ''}>${markHTML(p.map[d])}</td>`;
     }
     h += `<td class="c-tot">${p.total}</td></tr>`;
   });
@@ -288,15 +311,15 @@ function buildGrid() {
   document.getElementById('plist').innerHTML = DATA.map(p => {
     const chips = [];
     for (let d = 1; d <= DAYS; d++) {
-      const c = p.map[d]; if (!c) continue;
+      const c = p.map[d], m = isMod(p, d) ? ' mod' : ''; if (!c && !m) continue;
       const w = WD[dow(d)];
-      if (isOff(c.v)) {
+      if (c && isOff(c.v)) {
         const t = TYPES[c.t] || TYPES.n;
-        chips.push(`<span class="pd" style="background:${t.color}" title="${t.label}"><span class="dn">${d}</span><span class="dw">${w}</span></span>`);
-      } else chips.push(`<span class="pd etc"><span class="dn">${d}</span><span class="dw">${esc(c.v)}</span></span>`);
+        chips.push(`<span class="pd${m}" style="background:${t.color}" title="${t.label}"><span class="dn">${d}</span><span class="dw">${w}</span></span>`);
+      } else chips.push(`<span class="pd etc${m}"><span class="dn">${d}</span><span class="dw">${c ? esc(c.v) : '근무'}</span></span>`);
     }
     return `<div class="prow" data-no="${p.no}">
-      <div class="prow-head"><span class="no">${p.no}</span><span class="nm">${esc(p.name)}</span><span class="tt"><b>${p.total}</b>일</span></div>
+      <div class="prow-head"><span class="no">${p.no}</span><span class="nm">${esc(p.name)}${modTag(p)}</span><span class="tt"><b>${p.total}</b>일</span></div>
       <div class="pdays">${chips.join('') || '<span class="empty">휴무 없음</span>'}</div>
     </div>`;
   }).join('');
@@ -319,15 +342,15 @@ function renderMine(q) {
     for (let i = 0; i < FIRST_DOW; i++) cal += '<div></div>';
     const offDates = [], others = [];
     for (let d = 1; d <= DAYS; d++) {
-      const c = p.map[d], w = dow(d);
+      const c = p.map[d], w = dow(d), m = isMod(p, d) ? ' mod' : '';
       if (c && isOff(c.v)) {
         const t = TYPES[c.t] || TYPES.n;
         offDates.push(`${d}일(${WD[w]})`);
-        cal += `<div class="d off s${w}" style="background:${t.color}" title="${t.label}"><span class="n">${d}</span><span class="tag">${c.t === 'n' ? '휴무' : t.label.replace('(대기바꿈X)', '').replace('(당일X)', '')}</span></div>`;
+        cal += `<div class="d off s${w}${m}" style="background:${t.color}" title="${t.label}"><span class="n">${d}</span><span class="tag">${c.t === 'n' ? '휴무' : t.label.replace('(대기바꿈X)', '').replace('(당일X)', '')}</span></div>`;
       } else if (c) {
         others.push(`${d}일 ${esc(c.v)}`);
-        cal += `<div class="d other s${w}"><span class="n">${d}</span><span class="tag">${esc(c.v)}</span></div>`;
-      } else cal += `<div class="d s${w}"><span class="n">${d}</span></div>`;
+        cal += `<div class="d other s${w}${m}"><span class="n">${d}</span><span class="tag">${esc(c.v)}</span></div>`;
+      } else cal += `<div class="d s${w}${m}"><span class="n">${d}</span>${m ? '<span class="tag">근무</span>' : ''}</div>`;
     }
     return `<article class="card">
       <div class="card-head">
@@ -380,6 +403,26 @@ function showTab(k) {
 tabs.all.onclick = () => showTab('all');
 tabs.day.onclick = () => showTab('day');
 
+// 수정된 휴무 목록 (엑셀 메모 '수정')
+function renderChanges() {
+  const items = [];
+  DATA.forEach(p => Object.keys(p.mods).forEach(d => {
+    const c = p.map[d];
+    items.push({ p, d: +d, v: c ? (isOff(c.v) ? (TYPES[c.t] || TYPES.n).label : c.v) : '근무' });
+  }));
+  items.sort((a, b) => a.d - b.d || a.p.no - b.p.no);
+  const box = document.getElementById('changes');
+  if (!items.length) { box.hidden = true; return; }
+  box.hidden = false;
+  box.innerHTML = `<h2>수정된 휴무 <span class="cnt">${items.length}</span></h2>
+    <div class="chg-list">${items.map(i => `<button type="button" class="chg" data-name="${esc(i.p.name)}"><b>11/${i.d}(${WD[dow(i.d)]})</b>${esc(i.p.name)}<span class="v">→ ${esc(i.v)}</span></button>`).join('')}</div>`;
+  box.onclick = e => {
+    const b = e.target.closest('.chg'); if (!b) return;
+    const q = document.getElementById('q'); q.value = b.dataset.name; renderMine(q.value);
+    q.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+}
+
 // theme
 function setTheme(t, save) {
   document.documentElement.setAttribute('data-theme', t);
@@ -393,6 +436,7 @@ setTheme(savedTheme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'da
 
 buildGrid();
 buildDayPick();
+renderChanges();
 
 const q = document.getElementById('q');
 q.addEventListener('input', () => { renderMine(q.value); try { localStorage.setItem('r52-name', q.value.trim()); } catch (e) {} });
@@ -402,5 +446,3 @@ try {
   const t = localStorage.getItem('r52-tab'); if (t === 'day') showTab('day');
 } catch (e) {}
 </script>
-
-</body></html>
